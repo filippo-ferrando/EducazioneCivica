@@ -39,4 +39,31 @@ for row in reader_anom:
         year_anom.append(int(row[0]))
         anomaly.append(float(row[1]))
 
-fig, (ax1) = plt.subplots(1)
+fig, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(5, 1)
+
+fig.suptitle("Dispersione Ferrando")
+
+ax1.scatter(year_co2, total)
+ax1.set_xlabel('Anno')
+ax1.set_ylabel('Totale emissioni')
+
+ax2.scatter(year_anom, anomaly)
+ax2.set_xlabel('Anno')
+ax2.set_ylabel('Anomalie annue')
+
+ax3.scatter(year_anom, gas_fuel)
+ax3.set_xlabel('Anno')
+ax3.set_ylabel('Emissioni \n combustibile gassoso')
+
+ax4.scatter(year_anom, liquid_fuel)
+ax4.set_xlabel('Anno')
+ax4.set_ylabel('Emissioni \n combustibile fluido')
+
+ax5.scatter(year_anom, cement)
+ax5.set_xlabel('Anno')
+ax5.set_ylabel('Produzione cemento')
+
+plt.tight_layout()
+plt.show()
+
+

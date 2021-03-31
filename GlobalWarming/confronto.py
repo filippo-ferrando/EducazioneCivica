@@ -39,31 +39,20 @@ for row in reader_anom:
         year_anom.append(int(row[0]))
         anomaly.append(float(row[1]))
 
+fig, (ax1) = plt.subplots(1)
 
+fig.suptitle("Confronti Ferrando")
 
-fig, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(5, 1)
-
-fig.suptitle("Analisi Ferrando")
-
-ax1.plot(year_co2, total, '-g')
+ax1.plot(year_co2, total, '-g', label="Totale")
+ax1.plot(year_co2, gas_fuel, '-r', label="Gas")
+ax1.plot(year_co2, liquid_fuel, '-y', label="Liquido")
+ax1.plot(year_co2, cement, '-c', label="Cemento")
+ax1.plot(year_co2, gas_flaring, '-m', label="Flaring")
+ax1.plot(year_co2, gas_flaring, '-b', label="Solido")
 ax1.set_xlabel('Anno')
-ax1.set_ylabel('Totale emissioni')
-
-ax2.plot(year_anom, anomaly, '-r')
-ax2.set_xlabel('Anno')
-ax2.set_ylabel('Anomalie annue')
-
-ax3.plot(year_anom, gas_fuel, '-y')
-ax3.set_xlabel('Anno')
-ax3.set_ylabel('Emissioni \n combustibile gassoso')
-
-ax4.plot(year_anom, liquid_fuel, '--g')
-ax4.set_xlabel('Anno')
-ax4.set_ylabel('Emissioni \n combustibile fluido')
-
-ax5.plot(year_anom, cement, '--y')
-ax5.set_xlabel('Anno')
-ax5.set_ylabel('Produzione cemento')
+ax1.set_ylabel('Emissioni')
+ax1.legend(loc="upper left")
 
 plt.tight_layout()
+plt.grid()
 plt.show()
